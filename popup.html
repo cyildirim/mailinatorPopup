@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="bulma.min.css" />
+    <script src="clipboard.min.js"></script>
+    <script src="popup.js"></script>
+</head>
+
+<body>
+    <div class="level" style="margin-bottom:0px">
+
+        <div class="level-item">
+            <div class="field has-addons" style="width:100%">
+                <p class="control">
+                    <a href="#" class="button is-small is-primary" id="generate-mail-btn">Generate mail</a>
+                </p>
+                <p class="control"  style="width:100%">
+                    <input class="input is-small is-primary is-outlined" type="text"  style="width:100%" id="generated-mail-txt" readonly />
+                </p>
+                <p class="control">
+                    <button class="button is-small is-primary is-outlined" id='copy' data-clipboard-target="#generated-mail-txt">Copy</button>
+                </p>
+                <p class="control">
+                    <button id="jumpMailinator" class="button is-small is-primary is-outlined" >Jump Mailinator</button>
+                </p>
+
+            </div>
+        </div>
+
+
+        <iframe style="width:500px;height:500px;border:none" id='mailFrame' src=""></iframe>
+
+    </div>
+    <section class="hero is-primary" style="height:51px;padding-top:10px">
+        <div class="container">
+            <h2> Designed by <a target="blank" href="https://github.com/cyildirim">@cyildirim</a> for QA Engineers </h2>
+        </div>
+    </section>
+</body>
+
+</html>
