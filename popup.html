@@ -8,8 +8,7 @@
 
 <body>
     <div class="level" style="margin-bottom:0px">
-
-        <div class="level-item">
+        <div class="level-item" style="margin-bottom:0px !important">
             <div class="field has-addons" style="width:100%">
                 <p class="control">
                     <a href="#" class="button is-small is-primary" id="generate-mail-btn">Generate mail</a>
@@ -18,22 +17,28 @@
                     <input class="input is-small is-primary is-outlined" type="text"  style="width:100%" id="generated-mail-txt" readonly />
                 </p>
                 <p class="control">
+                    <a class="button is-static is-small">@mailinator.com</a>
+                </p>
+                <p class="control">
                     <button class="button is-small is-primary is-outlined" id='copy' data-clipboard-target="#generated-mail-txt">Copy</button>
                 </p>
                 <p class="control">
                     <button id="jumpMailinator" class="button is-small is-primary is-outlined" >Jump Mailinator</button>
                 </p>
-
+                
             </div>
         </div>
-
-
-        <iframe style="width:500px;height:500px;border:none" id='mailFrame' src=""></iframe>
-
+        
+        <iframe style="width:548px;height:500px;border:none" id='mailFrame' src=""></iframe>
     </div>
-    <section class="hero is-primary" style="height:51px;padding-top:10px">
-        <div class="container">
-            <h2> Designed by <a target="blank" href="https://github.com/cyildirim">@cyildirim</a> for QA Engineers </h2>
+    <section class="hero is-primary" style="height:22px;padding-top:2px">
+        <div class="level is-mobile">
+            <a class='button level-item is-small is-primary' target="blank" href="https://chrome.google.com/webstore/detail/mailinator-popup/iikfjdhkjomkhblcipkhgkjnhopgfkhg/reviews">
+                Drop a review
+            </a> 
+            <a class='button level-item is-small is-primary' target="blank" href="https://github.com/cyildirim/mailinatorPopup">
+                Contribute on Github
+            </a> 
         </div>
     </section>
 </body>

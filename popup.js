@@ -1,13 +1,3 @@
-// var clipboard = new Clipboard('#copy');
-
-// clipboard.on('success', function(e) {
-//     console.info('Action:', e.action);
-//     console.info('Text:', e.text);
-//     console.info('Trigger:', e.trigger);
-
-//     e.clearSelection();
-// });
-
 var buttonElement;
 var mailstr;
 
@@ -17,35 +7,44 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
 window.top.onload = function () {
 
-    if (getCookie("email")) {
-        var mailFrame = document.getElementById('mailFrame');
-        console.log(" should redirect = " + mailstr);
-        var emailPrefix = getCookie("email");
-        mailFrame.src = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + emailPrefix;
-        document.getElementById('generated-mail-txt').value = emailPrefix + "@mailinator.com"
+    var emailFromCookie = getCookie("email")
+    if (emailFromCookie !== undefined ) {
+        setEmail(emailFromCookie)
     }
+
     document.getElementById("generate-mail-btn").addEventListener("click", function () {
-        var generateMailTxt = document.getElementById('generated-mail-txt');
-
-        var rString = randomString(10);
-        mailstr = rString + "@mailinator.com";
-        generateMailTxt.value = mailstr;
-        var mailFrame = document.getElementById('mailFrame');
-        console.log(" should redirect = " + mailstr);
-        mailFrame.src = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + rString;
-        setCookie("email", rString, 10);
-
+        setEmail();
     });
 
     document.getElementById("jumpMailinator").addEventListener("click", function () {
         chrome.tabs.create({ url: document.getElementById("mailFrame").getAttribute("src") });
     });
 
-    var clipboard = new Clipboard('#copy');
+
+    function setEmail(emailPrefix) {
+        if(emailPrefix  === undefined)  {
+            emailPrefix = randomString(10).toLowerCase();
+            setCookie("email", emailPrefix, 10);
+        }
+
+        document.getElementById('generated-mail-txt').value = emailPrefix
+        
+
+        
+        var mailFrame = document.getElementById('mailFrame');
+        console.log(" should redirect = " + emailPrefix);
+        mailFrame.src = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + emailPrefix;
+
+        
+        
+    }
+    var clipboard = new Clipboard('#copy',{
+        text: function(trigger) {
+            return document.getElementById("generated-mail-txt").value+"@mailinator.com";
+        }
+    });
 
     clipboard.on('success', function (e) {
         console.info('Action:', e.action);
@@ -54,10 +53,6 @@ window.top.onload = function () {
 
         e.clearSelection();
     });
-
-
-
-
 }
 
 //---
