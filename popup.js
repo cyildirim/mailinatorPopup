@@ -30,12 +30,16 @@ window.top.onload = function () {
         }
 
         document.getElementById('generated-mail-txt').value = emailPrefix
-        
+        new Clipboard('#copy',{
+            text: function(trigger) {
+                return document.getElementById("generated-mail-txt").value+"@mailinator.com";
+            }
+        });
 
         
         var mailFrame = document.getElementById('mailFrame');
         console.log(" should redirect = " + emailPrefix);
-        mailFrame.src = "https://www.mailinator.com/v2/inbox.jsp?zone=public&query=" + emailPrefix;
+        mailFrame.src = "https://www.mailinator.com/v3/index.jsp?zone=public&query=" + emailPrefix + "#/#inboxpane";
 
         
         

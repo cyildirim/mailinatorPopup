@@ -1,4 +1,4 @@
-# Mailinator Popup v0.2.1
+# Mailinator Popup v0.3
 
 Mailinator Popup is a Google Chrome extension which helps to create fast dummy email and reach them simply.
 
